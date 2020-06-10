@@ -12,6 +12,9 @@ const app = express();
 app.disable('x-powered-by'); // Not working
 app.use(helmet());
 
+/**
+ * Application DB connect
+ */
 mongoose
 	.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => console.log('MongoDB connected.'))
@@ -26,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(require('cors')());
 
+/**
+ * Application routes
+ */
 require('./routes')(app);
 
 if (process.env.NODE_ENV === 'production') {
