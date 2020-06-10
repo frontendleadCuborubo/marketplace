@@ -1,5 +1,4 @@
 const Category = require('../models/Category');
-const slug = require('slug');
 const errorHandler = require('../utils/errorHandler');
 
 /**
@@ -20,6 +19,9 @@ module.exports.getRootCategories = async function (req, res) {
 	}
 };
 
+/**
+ * Get all child category of parent
+ */
 module.exports.getChildren = async function (req, res) {
 	try {
 		const categories = await Category.find({})
@@ -35,6 +37,9 @@ module.exports.getChildren = async function (req, res) {
 	}
 };
 
+/**
+ * Get category by path
+ */
 module.exports.getByPath = async function (req, res) {
 	try {
 		const category = await Category.findOne({

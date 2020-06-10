@@ -1,5 +1,3 @@
-const User = require('../models/User');
-
 const errorHandler = require('../utils/errorHandler');
 
 module.exports.getUser = async function (req, res) {
@@ -17,7 +15,7 @@ module.exports.updateUser = async function (req, res, next) {
 	try {
 		let user = req.user;
 		user.set(req.body);
-		var result = await user.save();
+		let result = await user.save();
 
 		res.json({
 			success: true,

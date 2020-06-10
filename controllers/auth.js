@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 const keys = require('../config/keys');
+const User = require('../models/User');
 const errorHandler = require('../utils/errorHandler');
 
 module.exports.login = async function (req, res) {
@@ -58,31 +58,4 @@ module.exports.logout = async function (req, res) {
 		success: true,
 		data: {},
 	});
-};
-
-module.exports.signup = async function (req, res) {
-	// email password
-	const candidate = await User.findOne({ email: req.body.email });
-
-	if (candidate) {
-		// Пользователь существует, нужно отправить ошибку
-		res.status(409).json({
-			message: 'Такой email уже занят. Попробуйте другой.',
-		});
-	} else {
-		// Нужно создать пользователя
-		const salt = bcrypt.genSaltSync(10);
-		const password = req.body.password;
-		const user = new User({
-			email: req.body.email,
-			password: bcrypt.hashSync(password, salt),
-		});
-
-		try {
-			await user.save();
-			res.status(201).json(user);
-		} catch (e) {
-			errorHandler(res, e);
-		}
-	}
 };

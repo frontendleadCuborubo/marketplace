@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
@@ -19,20 +18,10 @@ mongoose
 	.catch((error) => console.log(error));
 
 app.use(cookieParser(keys.jwt.secret));
-// app.use(
-// 	session({
-// 		secret: keys.jwt.secret,
-// 		name: 'sessionId',
-// 		resave: true,
-// 		saveUninitialized: true, //false
-// 	})
-// );
 app.use(passport.initialize());
-// app.use(passport.session());
 require('./middleware/passport')(passport);
 
 app.use(require('morgan')('dev'));
-// app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(require('cors')());
