@@ -157,10 +157,10 @@
 					</div>
 					<div class="ke-grid__item">
 						<div style="position: relative;">
-							<app-header-droppdown-menu
+							<app-header-menu
 								*ngIf="isLoggedIn"
 								[currentUser]="currentUser"
-							></app-header-droppdown-menu>
+							></app-header-menu>
 							<a
 								*ngIf="!isLoggedIn"
 								routerLink="/auth/login"

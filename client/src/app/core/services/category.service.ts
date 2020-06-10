@@ -4,6 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ICategory } from '../models/category.interfaces';
+import { IProduct } from '../models/product.interfaces';
+import { ApiSuccessResponse } from '../models/response.interface';
+
+export interface ProductCollectionResponse
+	extends ApiSuccessResponse<IProduct> {
+	pages: number;
+	totalProducts: number;
+}
 
 @Injectable()
 export class CategoryService {
@@ -33,7 +41,10 @@ export class CategoryService {
 	/**
 	 * @param id - Id of category
 	 */
-	loadProductCollection(id, query = null): Observable<any[]> {
+	loadProductCollection(
+		id,
+		query = null
+	): Observable<ProductCollectionResponse> {
 		let params = {};
 
 		if (query) {
@@ -41,6 +52,9 @@ export class CategoryService {
 				params: query,
 			};
 		}
-		return this.http.get<any[]>(`/api/product/${id}/collection`, params);
+		return this.http.get<ProductCollectionResponse>(
+			`/api/product/${id}/collection`,
+			params
+		);
 	}
 }

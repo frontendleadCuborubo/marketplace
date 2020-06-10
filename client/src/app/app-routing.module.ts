@@ -27,7 +27,7 @@ const routes: Routes = [
 		component: ProductAddPageComponent,
 	},
 	{
-		path: ':path',
+		path: 'catalog/:path',
 		loadChildren: () =>
 			import('src/app/catalog/catalog.module').then(
 				(m) => m.CatalogModule

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, ReplaySubject } from 'rxjs';
+import { throwError, ReplaySubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { UserService } from './user.service';
@@ -41,7 +41,9 @@ export class AuthService {
 		this.isLoggedInSubject.next(isLoggedIn);
 	}
 
-	private handleError(error: HttpErrorResponse) {
+	private handleError(
+		error: HttpErrorResponse
+	): Observable<HttpErrorResponse> {
 		return throwError(error);
 	}
 }

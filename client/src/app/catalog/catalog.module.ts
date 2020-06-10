@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { CatalogRoutingModule } from './catalog-routing.module';
@@ -20,7 +19,7 @@ import { ProductListToolbarComponent } from './views/components/products/toolbar
 		ProductSorterComponent,
 		ProductListToolbarComponent,
 	],
-	imports: [CommonModule, SharedModule, CatalogRoutingModule],
+	imports: [SharedModule, CatalogRoutingModule],
 	exports: [],
 	providers: [],
 })

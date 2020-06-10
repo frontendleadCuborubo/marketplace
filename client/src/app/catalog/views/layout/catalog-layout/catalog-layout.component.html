@@ -27,7 +27,7 @@
 				{{ data.category?.name }}
 			</h1>
 			<span class="ke-text ke-text_weight_black ke-text_color_muted">
-				{{ totalProducts && getCountText(totalProducts) }}
+				{{ categoryCount }}
 			</span>
 		</div>
 	</div>
@@ -52,7 +52,10 @@
 								>
 									<a
 										class="ke-link ke-link_lheight_medium"
-										[routerLink]="['/', subCategory.path]"
+										[routerLink]="[
+											'/catalog/',
+											subCategory.path
+										]"
 										title="{{ subCategory.name }}"
 										>{{ subCategory.name }}</a
 									>
@@ -75,9 +78,9 @@
 						</div>
 					</div>
 					<product-list [collection]="data.collection">
-						<product-list-toolbar *ngIf="totalProducts">
+						<product-list-toolbar *ngIf="productCollectionSize">
 							<app-pager
-								[collectionSize]="totalProducts"
+								[collectionSize]="productCollectionSize"
 								[(page)]="currentPage"
 								(pageChange)="onPageChange($event)"
 							></app-pager>

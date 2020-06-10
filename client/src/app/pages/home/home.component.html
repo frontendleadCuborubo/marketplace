@@ -7,13 +7,13 @@
 	<div class="ke-grid__item" *ngFor="let item of itemsList$ | async">
 		<a
 			class="categoryItem__link"
-			routerLink="{{ item.path }}"
+			routerLink="/catalog/{{ item.path }}"
 			title="{{ item.name }}"
 			><div
 				class="ke-box ke-box_round_full ke-box_background_lavender ke-box_padding-left_m ke-box_padding-left_xxl@large ke-box_padding-right_m ke-box_padding-right_xxl@large ke-box_margin-bottom_s categoryItem__imgWrapper"
 			>
 				<img
-					[attr.title]="item.name"
+					title="{{ item.name }}"
 					src="/assets/images/cat.svg"
 					class="ke-image categoryItem__img"
 				/>

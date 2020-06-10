@@ -1,8 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { IProduct } from 'src/app/core/models/product.interfaces';
 
-// TODO: To utils
-import { getCurrencySymbol } from 'src/app/core/constants/currencies';
+import { IProduct } from 'src/app/core/models/product.interfaces';
+import { getPrice } from 'src/app/shared/components/util/catalog-utils';
 
 @Component({
 	selector: 'product-item',
@@ -15,8 +14,7 @@ import { getCurrencySymbol } from 'src/app/core/constants/currencies';
 export class ProductItemComponent {
 	@Input() product: IProduct;
 
-	// TODO: To utils
 	getPrice(product, price) {
-		return price + ' ' + getCurrencySymbol(product.currency);
+		return getPrice(product, price);
 	}
 }

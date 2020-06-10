@@ -15,18 +15,9 @@ import { AppPagerConfig } from './pager-config';
 import { isNumber, getValueInRange } from '../util/util';
 
 /**
- * A context for the
- * * `NgbPaginationFirst`
- * * `NgbPaginationPrevious`
- * * `NgbPaginationNext`
- * * `NgbPaginationLast`
- * * `NgbPaginationEllipsis`
- *
- * link templates in case you want to override one.
- *
- * @since 4.1.0
+ * link templates.
  */
-export interface NgbPaginationLinkContext {
+export interface AppPagerLinkContext {
 	/**
 	 * The currently selected page number
 	 */
@@ -39,13 +30,11 @@ export interface NgbPaginationLinkContext {
 }
 
 /**
- * A context for the `NgbPaginationNumber` link template in case you want to override one.
+ * A context for the `AppPagerNumber`.
  *
- * Extends `NgbPaginationLinkContext`.
- *
- * @since 4.1.0
+ * Extends `AppPagerLinkContext`.
  */
-export interface NgbPaginationNumberContext extends NgbPaginationLinkContext {
+export interface AppPagerNumberContext extends AppPagerLinkContext {
 	/**
 	 * The page number, displayed by the current page link.
 	 */
@@ -53,63 +42,27 @@ export interface NgbPaginationNumberContext extends NgbPaginationLinkContext {
 }
 
 /**
- * A directive to match the 'ellipsis' link template
- *
- * @since 4.1.0
- */
-@Directive({ selector: 'ng-template[ngbPaginationEllipsis]' })
-export class NgbPaginationEllipsis {
-	constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
-}
-
-/**
- * A directive to match the 'first' link template
- *
- * @since 4.1.0
- */
-@Directive({ selector: 'ng-template[ngbPaginationFirst]' })
-export class NgbPaginationFirst {
-	constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
-}
-
-/**
- * A directive to match the 'last' link template
- *
- * @since 4.1.0
- */
-@Directive({ selector: 'ng-template[ngbPaginationLast]' })
-export class NgbPaginationLast {
-	constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
-}
-
-/**
  * A directive to match the 'next' link template
- *
- * @since 4.1.0
  */
-@Directive({ selector: 'ng-template[ngbPaginationNext]' })
-export class NgbPaginationNext {
-	constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({ selector: 'ng-template[appPagerNext]' })
+export class AppPagerNext {
+	constructor(public templateRef: TemplateRef<AppPagerLinkContext>) {}
 }
 
 /**
  * A directive to match the page 'number' link template
- *
- * @since 4.1.0
  */
-@Directive({ selector: 'ng-template[ngbPaginationNumber]' })
-export class NgbPaginationNumber {
-	constructor(public templateRef: TemplateRef<NgbPaginationNumberContext>) {}
+@Directive({ selector: 'ng-template[appPagerNumber]' })
+export class AppPagerNumber {
+	constructor(public templateRef: TemplateRef<AppPagerLinkContext>) {}
 }
 
 /**
  * A directive to match the 'previous' link template
- *
- * @since 4.1.0
  */
-@Directive({ selector: 'ng-template[ngbPaginationPrevious]' })
-export class NgbPaginationPrevious {
-	constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({ selector: 'ng-template[appPagePrevious]' })
+export class AppPagerPrevious {
+	constructor(public templateRef: TemplateRef<AppPagerLinkContext>) {}
 }
 
 @Component({
@@ -121,18 +74,12 @@ export class AppPager implements OnChanges {
 	pageCount = 0;
 	pages: number[] = [];
 
-	@ContentChild(NgbPaginationEllipsis, { static: false })
-	tplEllipsis: NgbPaginationEllipsis;
-	@ContentChild(NgbPaginationFirst, { static: false })
-	tplFirst: NgbPaginationFirst;
-	@ContentChild(NgbPaginationLast, { static: false })
-	tplLast: NgbPaginationLast;
-	@ContentChild(NgbPaginationNext, { static: false })
-	tplNext: NgbPaginationNext;
-	@ContentChild(NgbPaginationNumber, { static: false })
-	tplNumber: NgbPaginationNumber;
-	@ContentChild(NgbPaginationPrevious, { static: false })
-	tplPrevious: NgbPaginationPrevious;
+	@ContentChild(AppPagerNext, { static: false })
+	tplNext: AppPagerNext;
+	@ContentChild(AppPagerNumber, { static: false })
+	tplNumber: AppPagerNumber;
+	@ContentChild(AppPagerPrevious, { static: false })
+	tplPrevious: AppPagerPrevious;
 
 	/**
 	 * If `true`, pagination links will be disabled.
@@ -155,13 +102,6 @@ export class AppPager implements OnChanges {
 	@Input() ellipses: boolean;
 
 	/**
-	 * Whether to rotate pages when `maxSize` > number of pages.
-	 *
-	 * The current page always stays in the middle if `true`.
-	 */
-	@Input() rotate: boolean;
-
-	/**
 	 *  The number of items in your paginated collection.
 	 *
 	 *  Note, that this is not the number of pages. Page numbers are calculated dynamically based on
@@ -177,8 +117,6 @@ export class AppPager implements OnChanges {
 
 	/**
 	 *  The current page.
-	 *
-	 *  Page numbers start with `1`.
 	 */
 	@Input() page = 1;
 
@@ -196,13 +134,6 @@ export class AppPager implements OnChanges {
 	 */
 	@Output() pageChange = new EventEmitter<number>(true);
 
-	/**
-	 * The pagination display size.
-	 *
-	 * Bootstrap currently supports small and large sizes.
-	 */
-	@Input() size: 'sm' | 'lg';
-
 	constructor(config: AppPagerConfig) {
 		this.disabled = config.disabled;
 		this.boundaryLinks = config.boundaryLinks;
@@ -210,8 +141,6 @@ export class AppPager implements OnChanges {
 		this.ellipses = config.ellipses;
 		this.maxSize = config.maxSize;
 		this.pageSize = config.pageSize;
-		this.rotate = config.rotate;
-		this.size = config.size;
 	}
 
 	hasPrevious(): boolean {
@@ -346,12 +275,7 @@ export class AppPager implements OnChanges {
 			let start = 0;
 			let end = this.pageCount;
 
-			// either paginating or rotating page numbers
-			if (this.rotate) {
-				[start, end] = this._applyRotation();
-			} else {
-				[start, end] = this._applyPagination();
-			}
+			[start, end] = this._applyPagination();
 
 			this.pages = this.pages.slice(start, end);
 

@@ -8,6 +8,4 @@ export class AppPagerConfig {
 	ellipses = true;
 	maxSize = 0;
 	pageSize = 12;
-	rotate = false;
-	size: 'sm' | 'lg';
 }

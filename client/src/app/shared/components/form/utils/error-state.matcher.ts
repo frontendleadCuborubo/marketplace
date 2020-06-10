@@ -1,7 +1,7 @@
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 
-export class MyyErrorStateMatcher implements ErrorStateMatcher {
+export class FormErrorStateMatcher implements ErrorStateMatcher {
 	isErrorState(
 		control: FormControl,
 		form: FormGroupDirective | NgForm

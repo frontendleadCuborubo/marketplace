@@ -12,6 +12,7 @@ import {
 import { ICategory } from 'src/app/core/models/category.interfaces';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { IProduct } from 'src/app/core/models/product.interfaces';
+import { getCountText } from 'src/app/shared/components/util/catalog-utils';
 
 @Component({
 	selector: 'catalog-layout',
@@ -20,18 +21,12 @@ import { IProduct } from 'src/app/core/models/product.interfaces';
 export class CatalogLayoutComponent implements OnInit, OnDestroy {
 	activatedRouteSub: Subscription;
 	categoryId: string;
+	categoryCount: string;
 	currentPage: number;
-	totalProducts: number;
+	productCollectionSize: number;
 	category$: Observable<ICategory>;
 	subCategories$: Observable<ICategory[]>;
 	productCollection$: Observable<IProduct[]>;
-
-	// TODO: To utils
-	private readonly _defaultProductCountWords = [
-		'объявление',
-		'объявления',
-		'объявлений',
-	];
 
 	constructor(
 		private router: Router,
@@ -77,10 +72,12 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 				this.categoryService
 					.loadProductCollection(data[0]._id, data[1])
 					.pipe(
-						tap(
-							(data: any) =>
-								(this.totalProducts = data.totalProducts)
-						),
+						tap(({ totalProducts }: any) => {
+							this.productCollectionSize = totalProducts;
+							this.categoryCount = getCountText(
+								totalProducts || 0
+							);
+						}),
 						map(({ data }) => data)
 					)
 			)
@@ -93,20 +90,6 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 			queryParams,
 			queryParamsHandling: 'merge',
 		});
-	}
-
-	// TODO: To utils
-	getCountText(number) {
-		const cases = [2, 0, 1, 1, 1, 2];
-		return (
-			number +
-			' ' +
-			this._defaultProductCountWords[
-				number % 100 > 4 && number % 100 < 20
-					? 2
-					: cases[Math.min(number % 10, 5)]
-			]
-		);
 	}
 
 	onSortChange(value) {

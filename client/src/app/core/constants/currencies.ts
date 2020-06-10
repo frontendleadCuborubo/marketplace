@@ -17,9 +17,3 @@ export const CURRENCY_SYMBOLS_OPTIONS: CurrencySymbolsOptions[] = [
 		name: '€',
 	},
 ];
-
-export const getCurrencySymbol = (id) => {
-	return CURRENCY_SYMBOLS_OPTIONS.filter((symbol) => symbol.id === id).map(
-		(symbol) => symbol.name
-	)[0];
-};
