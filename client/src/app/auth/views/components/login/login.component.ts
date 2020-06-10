@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { switchMap, tap, takeUntil } from 'rxjs/operators';
 
 import {
 	AuthService,
@@ -16,7 +16,7 @@ import { FormComponent } from 'src/app/shared/components/form/form.component';
 	templateUrl: './login.component.html',
 })
 export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
-	authServiceSub: Subscription;
+	private _destroy$ = new Subject<void>(); // TODO: Add autounsubcribe
 
 	constructor(
 		protected formBuilder: FormBuilder,
@@ -29,12 +29,6 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.createForm();
-	}
-
-	ngOnDestroy() {
-		if (this.authServiceSub) {
-			this.authServiceSub.unsubscribe();
-		}
 	}
 
 	private createForm() {
@@ -50,14 +44,15 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 			return;
 		}
 
-		this.authServiceSub = this.authService
+		this.authService
 			.login(formData)
 			.pipe(
 				switchMap(() =>
 					this.userServie
 						.getUser()
 						.pipe(tap(() => this.router.navigate(['my/settings'])))
-				)
+				),
+				takeUntil(this._destroy$)
 			)
 			.subscribe({
 				error: ({ error }) => {
@@ -65,5 +60,10 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 					this.formGeneralErrors = errors;
 				},
 			});
+	}
+
+	ngOnDestroy() {
+		this._destroy$.next();
+		this._destroy$.complete();
 	}
 }

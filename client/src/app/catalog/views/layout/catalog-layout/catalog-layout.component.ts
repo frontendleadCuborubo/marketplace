@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import {
 	switchMap,
 	shareReplay,
 	withLatestFrom,
 	tap,
 	map,
+	takeUntil,
 } from 'rxjs/operators';
 
 import { ICategory } from 'src/app/core/models/category.interfaces';
@@ -19,7 +20,7 @@ import { getCountText } from 'src/app/shared/components/util/catalog-utils';
 	templateUrl: './catalog-layout.component.html',
 })
 export class CatalogLayoutComponent implements OnInit, OnDestroy {
-	activatedRouteSub: Subscription;
+	private _destroy$ = new Subject<void>(); // TODO: Add autounsubcribe
 	categoryId: string;
 	categoryCount: string;
 	currentPage: number;
@@ -39,11 +40,11 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	private _preparelayout() {
-		this.activatedRouteSub = this.activatedRoute.queryParams.subscribe(
-			(query) => {
+		this.activatedRoute.queryParams
+			.pipe(takeUntil(this._destroy$))
+			.subscribe((query) => {
 				this.currentPage = query.page ? parseInt(query.page) : 1;
-			}
-		);
+			});
 
 		this.category$ = this.activatedRoute.params.pipe(
 			switchMap((params) =>
@@ -109,6 +110,7 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.activatedRouteSub.unsubscribe();
+		this._destroy$.next();
+		this._destroy$.complete();
 	}
 }

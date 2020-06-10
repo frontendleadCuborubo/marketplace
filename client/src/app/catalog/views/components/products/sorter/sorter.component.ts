@@ -6,7 +6,8 @@ import {
 	OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 interface SortOptions {
 	title: string;
@@ -18,7 +19,7 @@ interface SortOptions {
 	templateUrl: './sorter.component.html',
 })
 export class ProductSorterComponent implements OnInit, OnDestroy {
-	private _activatedRouteSub: Subscription;
+	private _destroy$ = new Subject<void>(); // TODO: Add autounsubcribe
 	selectedValue = '-updatedAt';
 
 	@Output() onSort = new EventEmitter();
@@ -26,13 +27,13 @@ export class ProductSorterComponent implements OnInit, OnDestroy {
 	constructor(private activatedRoute: ActivatedRoute) {}
 
 	ngOnInit() {
-		this._activatedRouteSub = this.activatedRoute.queryParams.subscribe(
-			(params) => {
+		this.activatedRoute.queryParams
+			.pipe(takeUntil(this._destroy$))
+			.subscribe((params) => {
 				if (params['sort']) {
 					this.selectedValue = params['sort'];
 				}
-			}
-		);
+			});
 	}
 
 	getSortOptions(): SortOptions[] {
@@ -58,6 +59,7 @@ export class ProductSorterComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this._activatedRouteSub.unsubscribe();
+		this._destroy$.next();
+		this._destroy$.complete();
 	}
 }

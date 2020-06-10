@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { filter, map, mergeMap, takeUntil } from 'rxjs/operators';
 
 @Component({
 	selector: 'customer-content',
 	templateUrl: './customer-content.component.html',
 })
-export class CustomerContentComponent {
+export class CustomerContentComponent implements OnDestroy {
+	private _destroy$ = new Subject<void>(); // TODO: Add autounsubcribe
 	title: string = '';
 	menu: [];
 
@@ -17,7 +18,10 @@ export class CustomerContentComponent {
 	) {
 		const activatedRoute$ = this.detectActivatedRoute();
 		activatedRoute$
-			.pipe(mergeMap((route) => route.data))
+			.pipe(
+				takeUntil(this._destroy$),
+				mergeMap((route) => route.data)
+			)
 			.subscribe(({ title, menu }) => {
 				this.title = title;
 				this.menu = menu;
@@ -31,5 +35,10 @@ export class CustomerContentComponent {
 			map((route) => route)
 		);
 		return activatedRoute$;
+	}
+
+	ngOnDestroy() {
+		this._destroy$.next();
+		this._destroy$.complete();
 	}
 }
