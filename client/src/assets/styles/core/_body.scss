@@ -1,0 +1,164 @@
+.ke-body {
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+		Noto Sans, sans-serif;
+	font-size: 13px;
+	line-height: 1em;
+	font-weight: 400;
+	margin: 0;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.ke-body,
+.ke-body__section {
+	display: block;
+	min-width: 320px;
+}
+
+.ke-body__section {
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1240px;
+}
+
+.ke-body_display_block {
+	display: block;
+}
+
+.ke-body_display_none {
+	display: none;
+}
+
+.ke-body__section_display_block {
+	display: block;
+}
+
+.ke-body__section_display_none {
+	display: none;
+}
+
+.ke-body_size_xl .ke-body__section {
+	max-width: 1440px;
+}
+
+.ke-body_size_xxl .ke-body__section {
+	max-width: 1640px;
+}
+
+.ke-body_size_xxxl .ke-body__section {
+	max-width: 1840px;
+}
+
+.ke-body_indent_none .ke-body__section {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.ke-body_indent_xxs .ke-body__section {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.ke-body_indent_xs .ke-body__section {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.ke-body_indent_s .ke-body__section {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.ke-body_indent_m .ke-body__section {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.ke-body_indent_l .ke-body__section {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.ke-body_indent_xl .ke-body__section {
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+.ke-body_indent_xxl .ke-body__section {
+	padding-left: 28px;
+	padding-right: 28px;
+}
+
+.ke-body_overflow_auto {
+	overflow: auto;
+}
+
+.ke-body_overflow-x_auto {
+	overflow-x: auto;
+}
+
+.ke-body_overflow-y_auto {
+	overflow-y: auto;
+}
+
+.ke-body_overflow_hidden {
+	overflow: hidden;
+}
+
+.ke-body_overflow-x_hidden {
+	overflow-x: hidden;
+}
+
+.ke-body_overflow-y_hidden {
+	overflow-y: hidden;
+}
+
+.ke-body_overflow_scroll {
+	overflow: scroll;
+}
+
+.ke-body_overflow-x_scroll {
+	overflow-x: scroll;
+}
+
+.ke-body_overflow-y_scroll {
+	overflow-y: scroll;
+}
+
+.ke-body_overflow_visible {
+	overflow: visible;
+}
+
+.ke-body_overflow-x_visible {
+	overflow-x: visible;
+}
+
+.ke-body_overflow-y_visible {
+	overflow-y: visible;
+}
+
+.ke-body_background_default {
+	background: #f4f4f5;
+}
+
+.ke-body_color_default {
+	color: #17171d;
+}
+
+.ke-body_background_light {
+	background: #fff;
+}
+
+.ke-body_color_light {
+	color: #17171d;
+}
+
+@media only screen and (min-width: 960px) {
+	.ke-body_indent_xl\@large .ke-body__section {
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+}

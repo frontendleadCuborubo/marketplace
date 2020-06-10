@@ -1,0 +1,43 @@
+{
+	"name": "ng-marketplace",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index",
+		"server": "nodemon index",
+		"client-install": "npm install --prefix client",
+		"client": "npm run start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
+		"helmet": "^3.22.0",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.26.0",
+		"mongoose": "^5.9.16",
+		"mongoose-sequence": "^5.2.2",
+		"mongoose-unique-validator": "^2.0.3",
+		"morgan": "^1.10.0",
+		"multer": "^1.4.2",
+		"passport": "^0.4.1",
+		"passport-cookie": "^1.0.6",
+		"passport-jwt": "^4.0.0",
+		"passport-jwt-cookiecombo": "^1.0.5",
+		"passport-local": "^1.0.0",
+		"slug": "^3.3.0",
+		"validator": "^13.0.0"
+	},
+	"devDependencies": {
+		"concurrently": "^5.2.0",
+		"nodemon": "^2.0.4"
+	}
+}

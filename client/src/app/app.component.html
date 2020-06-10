@@ -1,0 +1,42 @@
+<div class="BasePage-layout b-layout">
+	<div class="b-layout__header">
+		<app-header
+			[isLoggedIn]="isLoggedIn$ | async"
+			[currentUser]="currentUser$ | async"
+		></app-header>
+	</div>
+	<div class="b-layout__banner">
+		<div
+			class="ke-box ke-box_background_light ke-box_border-bottom_muted ke-box_padding_xs"
+		>
+			<div
+				class="ke-grid ke-grid_align_center ke-grid_valign_middle ke-grid_indent_xs"
+			>
+				<div class="ke-grid__item">
+					<img
+						src="/assets/images/delivery.svg"
+						width="32"
+						class="ke-image"
+					/>
+				</div>
+				<div class="ke-grid__item">
+					<span class="ke-text ke-text_weight_medium"
+						>Бесплатная доставка и возврат.</span
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="BasePage-content b-layout__content">
+		<div class="ke-body__section">
+			<div class="ke-box">
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</div>
+	<div
+		class="ke-box ke-box_padding-top_m ke-box_background_light ke-box_margin-top_l@medium"
+	>
+		<app-footer></app-footer>
+	</div>
+</div>

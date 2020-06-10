@@ -1,0 +1,74 @@
+.ke-line {
+	border: solid transparent;
+	border-width: 1px 0 0;
+	margin: 0;
+}
+
+.ke-line,
+.ke-line_display_block {
+	display: block;
+}
+
+.ke-line_display_none {
+	display: none;
+}
+
+.ke-line_indent_none {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.ke-line_indent_xxs {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.ke-line_indent_xs {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.ke-line_indent_s {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+.ke-line_indent_m {
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+.ke-line_indent_l {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.ke-line_indent_xl {
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+
+.ke-line_indent_xxl {
+	margin-top: 28px;
+	margin-bottom: 28px;
+}
+
+.ke-line_style_solid {
+	border-top-style: solid;
+}
+
+.ke-line_style_dotted {
+	border-top-style: dotted;
+}
+
+.ke-line_style_dashed {
+	border-top-style: dashed;
+}
+
+.ke-line_color_default {
+	border-color: #dee1ef;
+}
+
+.ke-line_color_reset {
+	border-color: transparent;
+}

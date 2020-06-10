@@ -1,0 +1,167 @@
+.ke-link {
+	color: inherit;
+	line-height: 1em;
+	text-decoration: none;
+}
+
+.ke-link,
+.ke-link_display_inline {
+	display: inline;
+}
+
+.ke-link_display_none {
+	display: none;
+}
+
+.ke-link_size_small {
+	font-size: 11px;
+}
+
+.ke-link_size_default {
+	font-size: 13px;
+}
+
+.ke-link_size_big {
+	font-size: 15px;
+}
+
+.ke-link_size_h1 {
+	font-size: 24px;
+}
+
+.ke-link_size_h2 {
+	font-size: 22px;
+}
+
+.ke-link_size_h3 {
+	font-size: 20px;
+}
+
+.ke-link_size_h4 {
+	font-size: 18px;
+}
+
+.ke-link_size_h5 {
+	font-size: 16px;
+}
+
+.ke-link_size_h6 {
+	font-size: 14px;
+}
+
+.ke-link_weight_default {
+	font-weight: 400;
+}
+
+.ke-link_weight_thin {
+	font-weight: 100;
+}
+
+.ke-link_weight_light {
+	font-weight: 300;
+}
+
+.ke-link_weight_medium {
+	font-weight: 500;
+}
+
+.ke-link_weight_bold {
+	font-weight: 700;
+}
+
+.ke-link_weight_black {
+	font-weight: 900;
+}
+
+.ke-link_valign_baseline {
+	vertical-align: baseline;
+}
+
+.ke-link_valign_bottom {
+	vertical-align: bottom;
+}
+
+.ke-link_valign_middle {
+	vertical-align: middle;
+}
+
+.ke-link_valign_sub {
+	vertical-align: sub;
+}
+
+.ke-link_valign_super {
+	vertical-align: super;
+}
+
+.ke-link_valign_text-bottom {
+	vertical-align: text-bottom;
+}
+
+.ke-link_valign_text-top {
+	vertical-align: text-top;
+}
+
+.ke-link_valign_top {
+	vertical-align: top;
+}
+
+.ke-link_lheight_default {
+	line-height: 1em;
+}
+
+.ke-link_lheight_medium {
+	line-height: 1.25em;
+}
+
+.ke-link_lheight_large {
+	line-height: 1.5em;
+}
+
+.ke-link_style_dotted {
+	border-bottom: 1px dotted;
+}
+
+.ke-link_style_multi-line {
+	position: relative;
+	display: inline-block;
+}
+
+.ke-link_style_multi-line:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.ke-link_color_info {
+	color: #5b76d4;
+}
+
+.ke-link_color_white {
+	color: #fff;
+}
+
+.ke-link_color_brand-blue {
+	color: var(--main-color);
+}
+
+.ke-link_color_brand-red {
+	color: #ce1c2c;
+}
+
+.ke-link_blackhole_hover {
+	cursor: pointer;
+}
+
+.ke-link_blackhole_hover:focus,
+.ke-link_blackhole_hover:hover {
+	color: #1e00c2;
+	text-decoration: underline;
+}
+
+.ke-link_blackhole_hover:active {
+	color: #1b00ab;
+	text-decoration: underline;
+}

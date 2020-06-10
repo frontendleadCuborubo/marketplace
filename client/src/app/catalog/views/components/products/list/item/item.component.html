@@ -1,0 +1,165 @@
+<div
+	class="ke-box ke-box_position_relative ke-box_border_muted ke-box_round_m ke-box_background_light"
+	style="height: 100%;"
+>
+	<div class="ke-box ke-box_position_relative">
+		<a class="ke-link" href="#" title="{{ product.title }}">
+			<picture
+				class="ke-picture ke-picture_round-top_m ke-picture_fit_cover"
+			>
+				<source
+					type="image/webp"
+					data-srcset="/assets/images/webp_product.webp"
+					srcset="/assets/images/webp_product.webp"
+				/>
+				<img
+					class="ke-picture__item lazyloadPlaceholder ls-is-cached lazyloaded"
+					src="/assets/images/webp_product.webp"
+					srcset="/assets/images/webp_product.webp"
+					data-srcset="/assets/images/webp_product.webp"
+					alt="{{ product.title }}"
+				/>
+			</picture>
+		</a>
+		<div
+			class="ke-box ke-box_position_absolute ke-box_place_top-left ke-box_margin_xs"
+		>
+			<div
+				class="ke-box ke-box_round_xs ke-box_padding-left_xl ke-box_padding-right_xs ke-box_padding-tb_xxs ke-box_background_dark"
+			>
+				<div
+					class="ke-box ke-box_position_absolute ke-box_place_center-left ke-box_margin-left_xs"
+				>
+					<svg
+						width="12"
+						height="12"
+						viewBox="0 0 24 24"
+						style="display: block;"
+					>
+						<path
+							fill="#fff"
+							d="M20.1,6.3H15.3v-1A2.3,2.3,0,0,0,13,3H11A2.3,2.3,0,0,0,8.7,5.3v1H3.9A1.8,1.8,0,0,0,2.2,8V19.3A1.8,1.8,0,0,0,3.9,21H20.1a1.8,1.8,0,0,0,1.7-1.7V8A1.8,1.8,0,0,0,20.1,6.3ZM12,16.9a3.3,3.3,0,0,1-3.3-3.3,3.3,3.3,0,0,1,6.6,0A3.3,3.3,0,0,1,12,16.9Z"
+						></path>
+					</svg>
+				</div>
+				<span
+					class="ke-text ke-text_color_white ke-text_size_small ke-text_lheight_medium"
+				>
+					{{ product.images.length }}
+				</span>
+			</div>
+		</div>
+
+		<div
+			class="ke-box ke-box_position_absolute ke-box_place_bottom-left ke-box_margin_xs"
+		>
+			<div class="ke-grid ke-grid_indent_xs">
+				<div class="ke-grid__item">
+					<div
+						class="ke-box ke-box_padding-lr_xs ke-box_padding-tb_xxs ke-box_background_brand-blue"
+					>
+						<span
+							class="ke-text ke-text_lheight_medium ke-text_size_small ke-text_color_white"
+						>
+							Новое
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ke-box ke-box_padding_xs ke-box_padding_m@large">
+		<div class="ke-box">
+			<span class="ke-text ke-text_size_big ke-text_weight_black">
+				{{ getPrice(product, product.price) }}
+			</span>
+			<div
+				class="ke-box ke-box_margin-top_xxs"
+				*ngIf="product?.special_price"
+			>
+				<span class="ke-text ke-text_color_muted ke-text_style_strike">
+					{{ getPrice(product, product.special_price) }}
+				</span>
+			</div>
+		</div>
+		<div class="ke-box ke-box_padding-bottom_xxs ke-box_margin-top_xs">
+			<span
+				class="ke-text ke-text_lheight_medium ke-text_wrap_two-line ke-text_wrap_break"
+			>
+				<a
+					class="ke-link ke-link_lheight_medium ke-link_style_multi-line"
+					href="#"
+					title="{{ product.title }}"
+				>
+					{{ product.title }}
+				</a>
+			</span>
+		</div>
+		<div class="ke-box ke-box_padding-top_xxl ke-box_margin-top_xxl">
+			<div
+				class="ke-box ke-box_padding_xs ke-box_padding_m@large ke-box_position_absolute ke-box_place_bottom ke-box_width_1-1"
+			>
+				<span
+					class="ke-text ke-text_size_small ke-text_wrap_ellipsis ke-text_color_muted"
+				>
+					<span>
+						Львов
+					</span>
+				</span>
+				<div
+					class="ke-box ke-box_margin-top_xs ke-box_position_relative"
+				>
+					<div
+						class="ke-box ke-box_padding-right_xs ke-box_margin-right_xxl"
+					>
+						<div
+							class="ke-grid ke-grid_indent_xs ke-grid_valign_middle"
+						>
+							<div class="ke-grid__item">
+								<div style="width: 28px;">
+									<div
+										class="ke-picture ke-picture_fit_cover ke-picture_round_full"
+									>
+										<img
+											class="ke-picture__item lazyloaded"
+											src="/assets/images/avatar-17757.jpeg"
+											srcset="
+												/assets/images/avatar-17757.jpeg
+											"
+											data-srcset="/assets/images/avatar-17757.jpeg"
+										/>
+									</div>
+								</div>
+							</div>
+							<div
+								class="ke-grid__item ke-grid__item_width_expand"
+							>
+								<div
+									class="ke-box ke-box_position_relative ke-box_display_inline-block b-user-rating ke-box_padding-right_l"
+								>
+									<span class="ke-text_weight_medium">
+										4.0
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="b-fix-favorite-position">
+						<button
+							type="button"
+							title="Добавить в избранное"
+							class="ke-button ke-button_theme_simple ke-button_type_icon-small"
+						>
+							<svg width="24" height="24" viewBox="0 0 24 24">
+								<path
+									fill="currentColor"
+									d="M12.012 21.002c-.162 0-.323-.04-.47-.118C11.15 20.676 2 15.716 2 8.716c0-3.15 2.694-5.714 6.006-5.714 1.502 0 2.912.526 4.006 1.472a6.141 6.141 0 0 1 4.568-1.447C19.72 3.309 22 5.889 22 9.162c0 6.682-9.137 11.523-9.526 11.726a1.018 1.018 0 0 1-.462.114m-4.006-16C5.796 5.002 4 6.668 4 8.716c0 5 6.242 9.078 8.018 10.136C13.794 17.82 20 13.874 20 9.162c0-2.214-1.514-3.956-3.6-4.143-1.404-.128-2.754.441-3.604 1.515-.38.48-1.19.48-1.568 0-.77-.974-1.945-1.532-3.222-1.532"
+								></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

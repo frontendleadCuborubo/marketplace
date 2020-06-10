@@ -1,0 +1,9 @@
+<div
+	class="ke-grid ke-grid_indent_xs ke-grid_indent_m@large ke-grid_column_2 ke-grid_column_3@small ke-grid_column_4@medium"
+>
+	<product-item
+		*ngFor="let product of listData; trackBy: trackById"
+		[product]="product"
+	></product-item>
+</div>
+<ng-content select="product-list-toolbar"></ng-content>

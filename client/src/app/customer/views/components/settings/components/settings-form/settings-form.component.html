@@ -1,0 +1,159 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)">
+	<div
+		class="ke-box ke-box_width_1-2@medium ke-box_background_light ke-box_padding_m ke-box_padding-bottom_xl ke-box_round_m ke-box_border-bottom_muted"
+	>
+		<ul class="ke-list ke-list_indent_xl">
+			<!-- <li class="ke-list__item">
+				<div class="ke-box">
+					<span class="ke-text ke-text_weight_bold"
+						>Адрес страницы</span
+					>
+				</div>
+				<mat-form-field appearance="standard" style="width: 100%;">
+					<input
+						matInput
+						id="username"
+						name="username"
+						autocomplete="username"
+						formControlName="username"
+						value="id482390"
+					/>
+				</mat-form-field>
+				<div class="ke-box">
+					<span
+						class="ke-text ke-text_transform_lowercase ke-text_color_muted"
+						>https://localhost:3030/m-482390-</span
+					><span class="ke-text ke-text_transform_lowercase"
+						>id482390</span
+					>
+				</div>
+			</li> -->
+			<li class="ke-list__item">
+				<div class="ke-box ke-box_margin-bottom_xs">
+					<span class="ke-text ke-text_weight_bold">
+						Имя
+					</span>
+				</div>
+				<mat-form-field appearance="standard" style="width: 100%;">
+					<input
+						matInput
+						id="firstname"
+						name="firstname"
+						autocomplete="given-name"
+						formControlName="firstname"
+					/>
+				</mat-form-field>
+			</li>
+			<li class="ke-list__item">
+				<div class="ke-box">
+					<span class="ke-text ke-text_weight_bold">
+						Фамилия
+					</span>
+				</div>
+				<mat-form-field appearance="standard" style="width: 100%;">
+					<input
+						matInput
+						id="lastname"
+						name="lastname"
+						autocomplete="family-name"
+						formControlName="lastname"
+					/>
+				</mat-form-field>
+			</li>
+			<!-- <li class="ke-list__item">
+				<div class="ke-box">
+					<span class="ke-text ke-text_weight_bold">
+						Изменить фото профиля
+					</span>
+				</div>
+				<div class="ke-box ke-box_margin-top_xs">
+					<label
+						type="button"
+						for="file"
+						class="ke-button ke-button_theme_secondary"
+						>Загрузить<input
+							type="file"
+							id="file"
+							accept="image/jpeg, image/png"
+							name="file"
+							class="Profile__inputFile"
+					/></label>
+				</div>
+				<div class="ke-box ke-box_margin-top_xxs">
+					<span
+						class="ke-text ke-text_color_muted ke-text_style_italic"
+						>Выбери квадратное фото не менее 200*200</span
+					>
+				</div>
+			</li> -->
+			<li class="ke-list__item">
+				<div class="ke-box">
+					<span class="ke-text ke-text_weight_bold">
+						Город
+					</span>
+				</div>
+				<mat-form-field style="width: 100%;">
+					<select
+						matNativeControl
+						class="b-form-select__list"
+						name="addressRegion"
+						formControlName="addressRegion"
+						><option value="">--</option>
+						<option
+							*ngFor="let address of addressOptions"
+							[value]="address.id"
+						>
+							{{ address.name }}
+						</option>
+					</select>
+				</mat-form-field>
+			</li>
+			<li class="ke-list__item">
+				<div class="ke-box">
+					<span class="ke-text ke-text_weight_bold">
+						Пол
+					</span>
+				</div>
+				<mat-form-field style="width: 100%;">
+					<select
+						matNativeControl
+						name="gender"
+						class="b-form-select__list"
+						formControlName="gender"
+					>
+						<option value=""> -- </option>
+						<option
+							*ngFor="let gender of genderOptions"
+							[value]="gender.id"
+						>
+							{{ gender.name }}
+						</option>
+					</select>
+				</mat-form-field>
+			</li>
+			<li class="ke-list__item">
+				<div class="ke-box">
+					<span class="ke-text ke-text_weight_bold">
+						О себе
+					</span>
+				</div>
+				<mat-form-field appearance="standard" style="width: 100%;">
+					<textarea
+						matInput
+						placeholder="Введите текст"
+						rows="10"
+						name="about"
+						formControlName="about"
+					></textarea>
+				</mat-form-field>
+			</li>
+		</ul>
+	</div>
+	<div class="ke-box ke-box_margin-top_m">
+		<div class="ke-box ke-box_margin-right_m ke-box_display_inline-block">
+			<button type="submit" class="ke-button ke-button_theme_main">
+				Сохранить
+			</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,90 @@
+<ng-container
+	*ngIf="{
+		category: category$ | async,
+		collection: productCollection$ | async
+	} as data"
+>
+	<div class="ke-body__section">
+		<div class="ke-box ke-box_position_relative ke-box_padding-tb_xl">
+			<div class="ke-box ke-box_margin-bottom_xl">
+				<span class="ke-text ke-text_wrap_nowrap ke-text_align_left">
+					<a class="ke-link ke-link_color_brand-blue" routerLink="/"
+						>OZZI</a
+					>
+					<div
+						class="ke-box ke-box_display_inline ke-box_margin-lr_xxs"
+					>
+						<span class="ke-text ke-text_color_muted">
+							•
+						</span>
+					</div>
+					<span class="ke-text ke-text_weight_medium">{{
+						data.category?.name
+					}}</span>
+				</span>
+			</div>
+			<h1 class="ke-text ke-text_weight_black ke-text_size_h2">
+				{{ data.category?.name }}
+			</h1>
+			<span class="ke-text ke-text_weight_black ke-text_color_muted">
+				{{ totalProducts && getCountText(totalProducts) }}
+			</span>
+		</div>
+	</div>
+	<div class="ke-box ke-box_margin-bottom_xl">
+		<hr class="ke-line ke-line_color_default" />
+	</div>
+	<div class="ke-body__section">
+		<div class="ke-box ke-box_margin-tb_xl">
+			<div class="ke-grid ke-grid_indent_xl">
+				<aside class="ke-grid__item ke-grid__item_width_1-5">
+					<catalog-filters></catalog-filters>
+				</aside>
+				<main class="ke-grid__item ke-grid__item_width_expand">
+					<div class="ke-box ke-box_margin-bottom_xl">
+						<div class="ke-grid ke-grid_indent_m ke-grid_column_3">
+							<ng-container
+								*ngIf="subCategories$ | async as subCategories"
+							>
+								<div
+									class="ke-grid__item"
+									*ngFor="let subCategory of subCategories"
+								>
+									<a
+										class="ke-link ke-link_lheight_medium"
+										[routerLink]="['/', subCategory.path]"
+										title="{{ subCategory.name }}"
+										>{{ subCategory.name }}</a
+									>
+									<!--TODO: Subcategories Collection count-->
+									<!-- &nbsp;&nbsp;<span
+										class="ke-text ke-text_size_small ke-text_color_muted"
+										>58897</span
+									> -->
+								</div>
+							</ng-container>
+						</div>
+					</div>
+					<div class="ke-box ke-box_margin-bottom_xl">
+						<div class="ke-grid ke-grid_align_right">
+							<div class="ke-grid__item">
+								<product-sorter
+									(onSort)="onSortChange($event)"
+								></product-sorter>
+							</div>
+						</div>
+					</div>
+					<product-list [collection]="data.collection">
+						<product-list-toolbar *ngIf="totalProducts">
+							<app-pager
+								[collectionSize]="totalProducts"
+								[(page)]="currentPage"
+								(pageChange)="onPageChange($event)"
+							></app-pager>
+						</product-list-toolbar>
+					</product-list>
+				</main>
+			</div>
+		</div>
+	</div>
+</ng-container>

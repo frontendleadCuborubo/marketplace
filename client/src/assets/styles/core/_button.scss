@@ -1,0 +1,388 @@
+.ke-button {
+	display: inline-block;
+	padding: 11px 15px;
+	border: 1px solid transparent;
+	background: none;
+	color: inherit;
+	text-align: center;
+	text-decoration: none;
+	font-weight: 500;
+	line-height: 1.25;
+	vertical-align: middle;
+	transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 8px;
+	pointer-events: auto;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+	max-width: 100%;
+}
+
+.ke-button:disabled {
+	pointer-events: none;
+}
+
+.ke-button:focus {
+	outline: none;
+}
+
+.ke-button_state_disabled {
+	cursor: not-allowed;
+}
+
+.ke-button_state_readonly {
+	pointer-events: none;
+	cursor: default;
+}
+
+.ke-button_theme_link {
+	padding: 4px 8px;
+	border-radius: 13px;
+	font-weight: 400;
+	background-color: transparent;
+	border-color: transparent;
+	color: var(--main-color);
+}
+
+.ke-button_theme_link.ke-button_state_focus,
+.ke-button_theme_link.ke-button_state_hover,
+.ke-button_theme_link:focus,
+.ke-button_theme_link:hover {
+	background-color: #f5f9f7;
+	border-color: transparent;
+	color: #1e00c2;
+}
+
+.ke-button_theme_link.ke-button_state_active,
+.ke-button_theme_link:active {
+	background-color: #dad4ff;
+	border-color: transparent;
+	color: #1b00ab;
+}
+
+.ke-button_theme_link.ke-button_state_disabled,
+.ke-button_theme_link:disabled {
+	background-color: transparent;
+	border-color: transparent;
+	color: #a4abc4;
+}
+
+.ke-button_theme_link.ke-button_mode_warning {
+	color: #ce1c2c;
+}
+
+.ke-button_theme_link.ke-button_mode_warning.ke-button_state_focus,
+.ke-button_theme_link.ke-button_mode_warning.ke-button_state_hover,
+.ke-button_theme_link.ke-button_mode_warning:focus,
+.ke-button_theme_link.ke-button_mode_warning:hover {
+	background-color: #ffeaea;
+	color: #a32e2e;
+}
+
+.ke-button_theme_link.ke-button_mode_warning.ke-button_state_active,
+.ke-button_theme_link.ke-button_mode_warning:active {
+	background-color: #ffc6c6;
+	color: #912121;
+}
+
+.ke-button_theme_true-link {
+	padding: 0;
+	line-height: 1;
+	border-width: 0;
+	font-weight: 400;
+	background-color: transparent;
+	border-color: transparent;
+	color: var(--main-color);
+}
+
+.ke-button_theme_true-link.ke-button_state_focus,
+.ke-button_theme_true-link.ke-button_state_hover,
+.ke-button_theme_true-link:focus,
+.ke-button_theme_true-link:hover {
+	text-decoration: underline;
+	background-color: transparent;
+	border-color: transparent;
+	color: #1e00c2;
+}
+
+.ke-button_theme_true-link.ke-button_state_active,
+.ke-button_theme_true-link:active {
+	text-decoration: underline;
+	background-color: transparent;
+	border-color: transparent;
+	color: #1b00ab;
+}
+
+.ke-button_theme_true-link.ke-button_state_disabled,
+.ke-button_theme_true-link:disabled {
+	background-color: transparent;
+	border-color: transparent;
+	color: #a4abc4;
+}
+
+.ke-button_theme_true-link.ke-button_mode_warning {
+	color: #ce1c2c;
+}
+
+.ke-button_theme_true-link.ke-button_mode_warning.ke-button_state_focus,
+.ke-button_theme_true-link.ke-button_mode_warning.ke-button_state_hover,
+.ke-button_theme_true-link.ke-button_mode_warning:focus,
+.ke-button_theme_true-link.ke-button_mode_warning:hover {
+	color: #a32e2e;
+}
+
+.ke-button_theme_true-link.ke-button_mode_warning.ke-button_state_active,
+.ke-button_theme_true-link.ke-button_mode_warning:active {
+	color: #912121;
+}
+
+.ke-button_theme_main {
+	background-color: var(--main-color);
+	border-color: var(--main-color);
+	color: #fff;
+}
+
+.ke-button_theme_main.ke-button_state_focus,
+.ke-button_theme_main.ke-button_state_hover,
+.ke-button_theme_main:focus,
+.ke-button_theme_main:hover {
+	background-color: #049e6f;
+	border-color: #049e6f;
+	color: #fff;
+}
+
+.ke-button_theme_main.ke-button_state_active,
+.ke-button_theme_main:active {
+	background-color: #1b00ab;
+	border-color: #1b00ab;
+	color: #fff;
+}
+
+.ke-button_theme_main.ke-button_state_disabled,
+.ke-button_theme_main:disabled {
+	background-color: #dee1ef;
+	border-color: #dee1ef;
+	color: #a4abc4;
+}
+
+.ke-button_theme_main.ke-button_mode_warning {
+	background-color: #ce1c2c;
+	border-color: #ce1c2c;
+}
+
+.ke-button_theme_main.ke-button_mode_warning.ke-button_state_focus,
+.ke-button_theme_main.ke-button_mode_warning.ke-button_state_hover,
+.ke-button_theme_main.ke-button_mode_warning:focus,
+.ke-button_theme_main.ke-button_mode_warning:hover {
+	background-color: #a32e2e;
+	border-color: #a32e2e;
+}
+
+.ke-button_theme_main.ke-button_mode_warning.ke-button_state_active,
+.ke-button_theme_main.ke-button_mode_warning:active {
+	background-color: #912121;
+	border-color: #912121;
+}
+
+.ke-button_theme_secondary {
+	background-color: #fff;
+	border-color: #dee1ef;
+	color: var(--main-color);
+}
+
+.ke-button_theme_secondary.ke-button_state_focus,
+.ke-button_theme_secondary.ke-button_state_hover,
+.ke-button_theme_secondary:focus,
+.ke-button_theme_secondary:hover {
+	background-color: #fff;
+	border-color: #1e00c2;
+	color: #1e00c2;
+}
+
+.ke-button_theme_secondary.ke-button_state_active,
+.ke-button_theme_secondary:active {
+	background-color: #fff;
+	border-color: #1b00ab;
+	color: #1b00ab;
+}
+
+.ke-button_theme_secondary.ke-button_state_disabled,
+.ke-button_theme_secondary:disabled {
+	background-color: #fff;
+	border-color: #dee1ef;
+	color: #a4abc4;
+}
+
+.ke-button_theme_secondary.ke-button_mode_warning {
+	border-color: #ce1c2c;
+	color: #ce1c2c;
+}
+
+.ke-button_theme_secondary.ke-button_mode_warning.ke-button_state_focus,
+.ke-button_theme_secondary.ke-button_mode_warning.ke-button_state_hover,
+.ke-button_theme_secondary.ke-button_mode_warning:focus,
+.ke-button_theme_secondary.ke-button_mode_warning:hover {
+	border-color: #a32e2e;
+	color: #a32e2e;
+}
+
+.ke-button_theme_secondary.ke-button_mode_warning.ke-button_state_active,
+.ke-button_theme_secondary.ke-button_mode_warning:active {
+	border-color: #912121;
+	color: #912121;
+}
+
+.ke-button_theme_switcher {
+	font-weight: 400;
+	background-color: #fff;
+	border-color: #dee1ef;
+	color: inherit;
+}
+
+.ke-button_theme_switcher.ke-button_state_focus,
+.ke-button_theme_switcher.ke-button_state_hover,
+.ke-button_theme_switcher:focus,
+.ke-button_theme_switcher:hover {
+	background-color: #f5f9f7;
+	border-color: var(--main-color);
+}
+
+.ke-button_theme_switcher.ke-button_state_active,
+.ke-button_theme_switcher:active {
+	background-color: #f5f9f7;
+	border-color: var(--main-color);
+}
+
+.ke-button_theme_switcher.ke-button_state_disabled,
+.ke-button_theme_switcher:disabled {
+	background-color: #fff;
+	border-color: #dee1ef;
+	color: #a4abc4;
+}
+
+.ke-button_theme_switcher.ke-button_mode_warning.ke-button_state_focus,
+.ke-button_theme_switcher.ke-button_mode_warning.ke-button_state_hover,
+.ke-button_theme_switcher.ke-button_mode_warning:focus,
+.ke-button_theme_switcher.ke-button_mode_warning:hover {
+	background-color: #ffeaea;
+	border-color: #a32e2e;
+	color: #a32e2e;
+}
+
+.ke-button_theme_switcher.ke-button_mode_warning.ke-button_state_active,
+.ke-button_theme_switcher.ke-button_mode_warning:active {
+	background-color: #ffc6c6;
+	border-color: #912121;
+	color: #912121;
+}
+
+.ke-button_theme_special {
+	border-radius: 20px;
+	border-width: 2px;
+	padding: 8px 18px;
+	background-color: #ffd200;
+	border-color: var(--main-color);
+	color: #fff;
+}
+
+.ke-button_theme_special.ke-button_state_focus,
+.ke-button_theme_special.ke-button_state_hover,
+.ke-button_theme_special:focus,
+.ke-button_theme_special:hover {
+	background-color: #fa0;
+	border-color: var(--main-color);
+	color: #fff;
+}
+
+.ke-button_theme_special.ke-button_state_active,
+.ke-button_theme_special:active {
+	background-color: #f90;
+	border-color: var(--main-color);
+	color: var(--main-color);
+}
+
+.ke-button_theme_special.ke-button_state_disabled,
+.ke-button_theme_special:disabled {
+	background-color: #dee1ef;
+	border-color: #dee1ef;
+	color: #a4abc4;
+}
+
+.ke-button_theme_simple {
+	background-color: transparent;
+	border-color: transparent;
+	color: inherit;
+}
+
+.ke-button_theme_simple.ke-button_state_focus,
+.ke-button_theme_simple.ke-button_state_hover,
+.ke-button_theme_simple:focus,
+.ke-button_theme_simple:hover {
+	background-color: #f5f9f7;
+	border-color: transparent;
+	color: var(--main-color);
+}
+
+.ke-button_theme_simple.ke-button_state_active,
+.ke-button_theme_simple:active {
+	background-color: #f5f9f7;
+	border-color: transparent;
+	color: var(--main-color);
+}
+
+.ke-button_theme_simple.ke-button_state_disabled,
+.ke-button_theme_simple:disabled {
+	background-color: transparent;
+	border-color: transparent;
+	color: #a4abc4;
+}
+
+.ke-button_theme_simple.ke-button_mode_warning {
+	color: #ce1c2c;
+}
+
+.ke-button_theme_simple.ke-button_mode_warning.ke-button_state_focus,
+.ke-button_theme_simple.ke-button_mode_warning.ke-button_state_hover,
+.ke-button_theme_simple.ke-button_mode_warning:focus,
+.ke-button_theme_simple.ke-button_mode_warning:hover {
+	background-color: #ffeaea;
+	color: #a32e2e;
+}
+
+.ke-button_theme_simple.ke-button_mode_warning.ke-button_state_active,
+.ke-button_theme_simple.ke-button_mode_warning:active {
+	background-color: #ffc6c6;
+	color: #912121;
+}
+
+.ke-button_type_icon {
+	line-height: 1em;
+	padding: 8px;
+}
+
+.ke-button_type_icon svg {
+	width: 22px;
+	height: 22px;
+	vertical-align: middle;
+}
+
+.ke-button_type_icon-small {
+	line-height: 1em;
+	padding: 4px;
+}
+
+.ke-button_type_block,
+.ke-button_type_square {
+	display: block;
+	width: 100%;
+}
+
+.ke-button_type_square {
+	position: relative;
+	padding-top: 100%;
+	padding-bottom: 0;
+	box-sizing: border-box;
+}

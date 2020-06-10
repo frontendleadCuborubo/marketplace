@@ -1,0 +1,70 @@
+<ng-template #previous>Назад</ng-template>
+<ng-template #next>Вперед</ng-template>
+<ng-template #defaultNumber let-page let-currentPage="currentPage">
+	{{ page }}
+</ng-template>
+<ul
+	class="ke-grid ke-grid_valign_middle ke-grid_align_center ke-grid_indent_xs"
+>
+	<li
+		*ngIf="directionLinks && !previousDisabled()"
+		class="ke-grid__item"
+		[class.disabled]="previousDisabled()"
+	>
+		<a
+			class="ke-button ke-button_theme_switcher"
+			href
+			(click)="selectPage(page - 1); $event.preventDefault()"
+		>
+			<ng-template
+				[ngTemplateOutlet]="tplPrevious?.templateRef || previous"
+				[ngTemplateOutletContext]="{ disabled: previousDisabled() }"
+			></ng-template>
+		</a>
+	</li>
+	<li
+		*ngFor="let pageNumber of pages"
+		class="ke-grid__item"
+		[class.active]="pageNumber === page"
+		[class.disabled]="isEllipsis(pageNumber) || disabled"
+	>
+		<a
+			*ngIf="!isEllipsis(pageNumber)"
+			class="ke-button ke-button_theme_switcher"
+			[ngClass]="{
+				'ke-button_state_active ke-button_state_readonly':
+					pageNumber === page
+			}"
+			href
+			(click)="selectPage(pageNumber); $event.preventDefault()"
+		>
+			<ng-template
+				[ngTemplateOutlet]="tplNumber?.templateRef || defaultNumber"
+				[ngTemplateOutletContext]="{
+					disabled: disabled,
+					$implicit: pageNumber,
+					currentPage: page
+				}"
+			></ng-template>
+		</a>
+	</li>
+	<li
+		*ngIf="directionLinks && !nextDisabled()"
+		class="ke-grid__item"
+		[class.disabled]="nextDisabled()"
+	>
+		<a
+			class="ke-button ke-button_theme_switcher"
+			href
+			(click)="selectPage(page + 1); $event.preventDefault()"
+		>
+			<ng-template
+				[ngTemplateOutlet]="tplNext?.templateRef || next"
+				[ngTemplateOutletContext]="{
+					disabled: nextDisabled(),
+					currentPage: page
+				}"
+			></ng-template>
+		</a>
+	</li>
+</ul>

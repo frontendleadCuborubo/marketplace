@@ -1,0 +1,476 @@
+<div
+	class="ke-box ke-box_background_light ke-box_padding_xs ke-box_padding_none@large"
+>
+	<div class="ke-box ke-box_margin-tb_xl">
+		<div class="ke-box ke-box_margin-bottom_xl">
+			<h1 class="ke-text ke-text_size_h2 ke-text_weight_black">
+				Подать объявление
+			</h1>
+		</div>
+		<div class="ke-grid ke-grid_indent_xl">
+			<div class="ke-grid__item ke-grid__item_width_expand">
+				<hr class="ke-line ke-line_color_default" />
+				<div class="ke-box ke-box_margin-top_xl">
+					<form
+						[formGroup]="form"
+						(ngSubmit)="handleSubmit(form.value)"
+					>
+						<ul class="ke-list ke-list_indent_xl">
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_top ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Фотографии
+														<div
+															class="ke-box ke-box_display_inline ke-box_margin-left_xxs"
+														>
+															<span
+																class="ke-text ke-text_size_default ke-text_color_brand-red"
+																>*</span
+															>
+														</div>
+													</legend></span
+												>
+											</div>
+											<div
+												class="ke-grid ke-grid_indent_xs"
+											>
+												<div
+													class="ke-grid__item ke-grid__item_width_expand"
+												>
+													<div
+														type="button"
+														class="ke-button ke-button_theme_switcher ProductAddPhotos__placeholder"
+													>
+														<div
+															class="ProductAddPhotos__placeholder__content"
+														>
+															<div>
+																<svg
+																	width="24"
+																	height="24"
+																	viewBox="0 0 24 24"
+																>
+																	<path
+																		fill="currentColor"
+																		d="M19 17.712V9.206c0-.137-.111-.205-.247-.205H16c-.553 0-1-.49-1-1.042v-1.31a.65.65 0 0 0-.649-.648H9.649A.65.65 0 0 0 9 6.65v1.309C9 8.512 8.553 9 8 9H5.247C5.111 9 5 9.069 5 9.206v8.506c0 .137.111.289.247.289h13.506c.136 0 .247-.152.247-.29zM18.753 7C19.992 7 21 7.967 21 9.206v8.506C21 18.95 19.992 20 18.753 20H5.247C4.008 20 3 18.95 3 17.71V9.207C3 7.966 4.008 7 5.247 7H7V6.65A2.652 2.652 0 0 1 9.649 4h4.702A2.652 2.652 0 0 1 17 6.65V7h1.753zM12 15c1.103 0 2-.897 2-2s-.897-2-2-2-2 .897-2 2 .897 2 2 2zm0-6c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"
+																	></path>
+																</svg>
+																<div
+																	class="ke-box ke-box_margin-top_xxs ke-box_margin-bottom_xs"
+																>
+																	Добавить
+																</div>
+																<span
+																	class="ke-text ke-text_color_muted ke-text_size_small"
+																	>0 из
+																	20</span
+																>
+															</div>
+														</div>
+														<input
+															multiple=""
+															name="cover"
+															type="file"
+															accept="image/jpeg, image/png"
+															class="ProductAddPhotos__inputUpload"
+															title="Кликни для выбора фото"
+														/>
+													</div>
+												</div>
+											</div>
+											<div
+												class="ke-box ke-box_margin-top_xs"
+											>
+												<span
+													class="ke-text ke-text_size_small ke-text_lheight_medium"
+													>Первое фото — обложка.
+													Перетяни фото для изменения
+													порядка.</span
+												>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_middle ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Название
+														<div
+															class="ke-box ke-box_display_inline ke-box_margin-left_xxs"
+														>
+															<span
+																class="ke-text ke-text_size_default ke-text_color_brand-red"
+																>*</span
+															>
+														</div>
+													</legend></span
+												>
+											</div>
+											<mat-form-field
+												style="width: 100%;"
+											>
+												<input
+													matInput
+													formControlName="title"
+													placeholder="Что ты продаешь?"
+													autocomplete="off"
+													maxlength="65"
+												/>
+												<mat-error
+													*ngIf="
+														form.get('title')
+															.dirty &&
+														form
+															.get('title')
+															.hasError(
+																'required'
+															)
+													"
+												>
+													Это обязательное поле
+												</mat-error>
+												<mat-hint>
+													<span
+														class="ke-text ke-text_color_muted ke-text_size_small ke-text_lheight_medium"
+														>Например: Чашка
+														керамическая</span
+													>
+												</mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_top ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Описание
+														<div
+															class="ke-box ke-box_display_inline ke-box_margin-left_xxs"
+														>
+															<span
+																class="ke-text ke-text_size_default ke-text_color_brand-red"
+																>*</span
+															>
+														</div>
+													</legend></span
+												>
+											</div>
+											<mat-form-field
+												style="width: 100%;"
+											>
+												<textarea
+													matInput
+													formControlName="description"
+													name="description"
+													placeholder="Какие есть особенности?"
+													minlength="20"
+													maxlength="10000"
+													rows="4"
+												></textarea>
+												<mat-error
+													*ngIf="
+														form.get('description')
+															.dirty &&
+														form
+															.get('description')
+															.hasError(
+																'required'
+															)
+													"
+												>
+													Это обязательное поле
+												</mat-error>
+												<mat-hint>
+													<span
+														class="ke-text ke-text_color_muted ke-text_size_small ke-text_lheight_medium"
+														>Например: Чашка
+														керамическая наполнит
+														день уютом</span
+													>
+												</mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_top ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Категория
+														<div
+															class="ke-box ke-box_display_inline ke-box_margin-left_xxs"
+														>
+															<span
+																class="ke-text ke-text_size_default ke-text_color_brand-red"
+																>*</span
+															>
+														</div>
+													</legend></span
+												>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_middle ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Цена
+														<div
+															class="ke-box ke-box_display_inline ke-box_margin-left_xxs"
+														>
+															<span
+																class="ke-text ke-text_size_default ke-text_color_brand-red"
+																>*</span
+															>
+														</div>
+													</legend></span
+												>
+											</div>
+											<div
+												class="ke-grid ke-grid_valign_top ke-grid_indent_m ke-grid_indent_xl@medium ke-grid_column_1 ke-grid_column_3@medium"
+											>
+												<div class="ke-grid__item">
+													<div
+														class="ke-grid ke-grid_valign_middle ke-grid_indent_xs"
+													>
+														<div
+															class="ke-grid__item ke-grid__item_width_expand"
+														>
+															<mat-form-field
+																style="
+																	width: 100%;
+																"
+															>
+																<input
+																	matInput
+																	autocomplete="off"
+																	id="product-form-price"
+																	name="price"
+																	formControlName="price"
+																	placeholder="Например: 99.99"
+																	type="text"
+																/>
+															</mat-form-field>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_middle ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Имя контактного лица
+													</legend></span
+												>
+											</div>
+											<mat-form-field
+												style="width: 100%;"
+											>
+												<input
+													matInput
+													name="user_name"
+													type="text"
+													placeholder="Например: Саша"
+													disabled=""
+												/>
+											</mat-form-field>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_middle ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Телефон
+													</legend></span
+												>
+											</div>
+											<mat-form-field
+												style="width: 100%;"
+											>
+												<input
+													matInput
+													name="user_phone"
+													type="text"
+													placeholder="+380XXXXXXXXX"
+													disabled=""
+												/>
+											</mat-form-field>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<fieldset>
+									<div
+										class="ke-grid ke-grid_align_right ke-grid_valign_middle ke-grid_indent_xxs"
+									>
+										<div
+											class="ke-grid__item ke-grid__item_width_expand"
+										>
+											<div
+												class="ke-box ke-box_margin-bottom_xs"
+											>
+												<span
+													class="ke-text ke-text_weight_bold"
+													><legend>
+														Местоположение
+													</legend></span
+												>
+											</div>
+											<mat-form-field
+												style="width: 100%;"
+											>
+												<select
+													matNativeControl
+													name=""
+													id=""
+												>
+													<option>Днепр</option>
+												</select>
+											</mat-form-field>
+										</div>
+									</div>
+								</fieldset>
+							</li>
+							<li class="ke-list__item">
+								<button
+									type="submit"
+									class="ke-button ke-button_theme_main"
+								>
+									Опубликовать
+								</button>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+			<div
+				class="ke-grid__item ke-grid__item_width_1-1 ke-grid__item_width_1-4@large"
+			>
+				<ul class="ke-list ke-list_indent_xl">
+					<li class="ke-list__item">
+						<div class="ke-box ke-box_margin-bottom_xs">
+							<span class="ke-text ke-text_weight_bold"
+								>Как сфотографировать товар?</span
+							>
+						</div>
+						<span class="ke-text ke-text_lheight_medium"
+							>Сделай до 5 простых фотографий на телефон с разных
+							ракурсов в обычной обстановке. Для покупателей
+							важнее не красота фото, а реальное состояние
+							вещей.</span
+						>
+					</li>
+					<li class="ke-list__item">
+						<div class="ke-box ke-box_margin-bottom_xs">
+							<span class="ke-text ke-text_weight_bold"
+								>Какую цену поставить?</span
+							>
+						</div>
+						<span class="ke-text ke-text_lheight_medium"
+							>В среднем, при продаже с рук ставят цену со скидкой
+							от 20% до 50% от стоимости нового товара в
+							зависимости от его состояния.</span
+						>
+					</li>
+					<li class="ke-list__item">
+						<div class="ke-box ke-box_margin-bottom_xs">
+							<span class="ke-text ke-text_weight_bold"
+								>Как описать товар?</span
+							>
+						</div>
+						<span class="ke-text ke-text_lheight_medium"
+							>Напиши причину продажи товара, как и сколько ты ним
+							пользовался(-лась). Расскажи о своих впечатлениях и
+							рекомендациях будущему владельцу.</span
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

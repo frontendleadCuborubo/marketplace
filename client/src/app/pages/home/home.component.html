@@ -1,0 +1,24 @@
+<div class="ke-box ke-box_position_relative ke-box_padding-tb_xl">
+	<h2 class="ke-text ke-text_weight_black ke-text_size_h2">
+		Главные рубрики
+	</h2>
+</div>
+<div class="ke-grid ke-grid_column_10 ke-grid_indent_m">
+	<div class="ke-grid__item" *ngFor="let item of itemsList$ | async">
+		<a
+			class="categoryItem__link"
+			routerLink="{{ item.path }}"
+			title="{{ item.name }}"
+			><div
+				class="ke-box ke-box_round_full ke-box_background_lavender ke-box_padding-left_m ke-box_padding-left_xxl@large ke-box_padding-right_m ke-box_padding-right_xxl@large ke-box_margin-bottom_s categoryItem__imgWrapper"
+			>
+				<img
+					[attr.title]="item.name"
+					src="/assets/images/cat.svg"
+					class="ke-image categoryItem__img"
+				/>
+			</div>
+			<p class="categoryItem__text">{{ item.name }}</p></a
+		>
+	</div>
+</div>

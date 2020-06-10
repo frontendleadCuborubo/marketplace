@@ -1,0 +1,26 @@
+<div
+	class="ke-box ke-box_margin-bottom_m ke-box_margin-bottom_xl@large ke-box_margin-top_xxl ke-box_padding-top_s"
+>
+	<h1
+		class="ke-text ke-text_size_h5 ke-text_size_h2@large ke-text_weight_medium ke-text_weight_black@large"
+	>
+		{{ title }}
+	</h1>
+</div>
+<div class="ke-box ke-box_margin-bottom_m ke-box_margin-bottom_xl@large">
+	<div class="b-tabs">
+		<ul class="b-tabs__list">
+			<li
+				class="b-tabs__item"
+				routerLinkActive="b-tabs__item_state_active"
+				[routerLinkActiveOptions]="{ exact: true }"
+				*ngFor="let menuItem of menu"
+			>
+				<a class="b-tabs__link" [routerLink]="[menuItem.path]">
+					{{ menuItem.title }}
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<router-outlet></router-outlet>
