@@ -71,14 +71,14 @@
 	<div class="ke-box ke-box_padding_xs ke-box_padding_m@large">
 		<div class="ke-box">
 			<span class="ke-text ke-text_size_big ke-text_weight_black">
-				{{ getPrice(product, product.price) }}
+				{{ price }}
 			</span>
 			<div
 				class="ke-box ke-box_margin-top_xxs"
 				*ngIf="product?.special_price"
 			>
 				<span class="ke-text ke-text_color_muted ke-text_style_strike">
-					{{ getPrice(product, product.special_price) }}
+					{{ product.special_price }}
 				</span>
 			</div>
 		</div>

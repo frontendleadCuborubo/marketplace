@@ -15,7 +15,11 @@
 					>
 				</div>
 			</div>
-			<form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)">
+			<form
+				id="login-form"
+				[formGroup]="form"
+				(ngSubmit)="handleSubmit(form.value)"
+			>
 				<div
 					class="ke-box ke-box_margin_none ke-box_margin_l@medium ke-box_padding_l"
 				>
@@ -120,12 +124,14 @@
 								</div>
 							</div>
 							<mat-form-field
+								class="field-email"
 								appearance="standard"
 								style="width: 100%;"
 							>
 								<mat-label>Email адрес</mat-label>
 								<input
 									matInput
+									id="email"
 									type="email"
 									formControlName="email"
 									placeholder="Введите Email адрес"
@@ -140,12 +146,14 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field
+								class="field-password"
 								appearance="standard"
 								style="width: 100%;"
 							>
 								<mat-label>Пароль</mat-label>
 								<input
 									matInput
+									id="password"
 									type="password"
 									formControlName="password"
 									placeholder="Введите пароль"

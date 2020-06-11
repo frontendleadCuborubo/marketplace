@@ -27,12 +27,14 @@ export class CustomerSettingsComponent implements OnInit, OnDestroy {
 		this.userService
 			.updateUser(formData)
 			.pipe(takeUntil(this._destroy$))
-			.subscribe((user: IUser) => {
-				this._snackBar.open('Данные успешно изменены', null, {
-					duration: 2000,
-					verticalPosition: 'top',
-				});
-			});
+			.subscribe(() => this.showSnackBar());
+	}
+
+	private showSnackBar() {
+		this._snackBar.open('Данные успешно изменены', null, {
+			duration: 2000,
+			verticalPosition: 'top',
+		});
 	}
 
 	ngOnDestroy() {

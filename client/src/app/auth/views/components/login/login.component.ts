@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -15,7 +15,7 @@ import { FormComponent } from 'src/app/shared/components/form/form.component';
 	selector: 'auth-login',
 	templateUrl: './login.component.html',
 })
-export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
+export class LoginComponent extends FormComponent implements OnDestroy {
 	private _destroy$ = new Subject<void>(); // TODO: Add autounsubcribe
 
 	constructor(
@@ -25,13 +25,6 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 		private userServie: UserService
 	) {
 		super(formBuilder);
-	}
-
-	ngOnInit() {
-		this.createForm();
-	}
-
-	private createForm() {
 		this.form = this.formBuilder.group({
 			email: new FormControl('', [Validators.required, Validators.email]),
 			password: new FormControl('', [Validators.required]),
@@ -47,12 +40,12 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 		this.authService
 			.login(formData)
 			.pipe(
-				takeUntil(this._destroy$),
 				switchMap(() =>
 					this.userServie
 						.getUser()
 						.pipe(tap(() => this.router.navigate(['my/settings'])))
-				)
+				),
+				takeUntil(this._destroy$)
 			)
 			.subscribe({
 				error: ({ error }) => {

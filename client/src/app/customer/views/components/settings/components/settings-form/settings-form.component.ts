@@ -27,18 +27,30 @@ export class CustomerSettingsFormComponent implements OnInit {
 	constructor(private formBuilder: FormBuilder) {}
 
 	ngOnInit() {
-		this.createForm(this.formData);
+		this.createForm();
+		this.form.patchValue(this.toFormValue(this.formData));
 	}
 
-	private createForm(data) {
+	private createForm() {
 		this.form = this.formBuilder.group({
-			username: new FormControl(data.username || 'id493280', []),
-			firstname: new FormControl(data.firstname || '', []),
-			lastname: new FormControl(data.lastname || '', []),
-			addressRegion: new FormControl(data.addressRegion || '', []),
-			gender: new FormControl(data.gender || '', []),
-			about: new FormControl(data.about || '', []),
+			username: new FormControl('', []),
+			firstname: new FormControl('', []),
+			lastname: new FormControl('', []),
+			addressRegion: new FormControl('', []),
+			gender: new FormControl('', []),
+			about: new FormControl('', []),
 		});
+	}
+
+	private toFormValue(data): SettingsForm {
+		return {
+			username: data.username || 'id493280',
+			firstname: data.firstname || '',
+			lastname: data.lastname || '',
+			addressRegion: data.addressRegion || '',
+			gender: data.gender || '',
+			about: data.about || '',
+		};
 	}
 
 	handleSubmit(formData) {

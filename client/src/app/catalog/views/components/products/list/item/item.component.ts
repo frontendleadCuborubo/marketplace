@@ -12,9 +12,8 @@ import { getPrice } from 'src/app/catalog/helper/catalog-data';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductItemComponent {
-	@Input() product: IProduct;
-
-	getPrice(product, price) {
-		return getPrice(product, price);
+	public get price() {
+		return getPrice(this.product, this.product.price);
 	}
+	@Input() product: IProduct;
 }

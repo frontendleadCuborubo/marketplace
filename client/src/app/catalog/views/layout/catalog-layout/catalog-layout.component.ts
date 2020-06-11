@@ -41,19 +41,14 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	private _preparelayout() {
-		this.activatedRoute.queryParams
-			.pipe(takeUntil(this._destroy$))
-			.subscribe((query) => {
-				this.currentPage = query.page ? parseInt(query.page) : 1;
-			});
-
+		this.subscribeToQueryParams();
 		this.category$ = this.activatedRoute.params.pipe(
 			switchMap((params) =>
 				this.categoryService
 					.getByPath(params[PATH_QUERY_PARAM_NAME])
 					.pipe(tap((category) => (this.categoryId = category._id)))
 			),
-			shareReplay(1)
+			shareReplay({ refCount: true, bufferSize: 1 })
 		);
 
 		// Prodblem: Different id
@@ -84,6 +79,14 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 					)
 			)
 		);
+	}
+
+	private subscribeToQueryParams() {
+		this.activatedRoute.queryParams
+			.pipe(takeUntil(this._destroy$))
+			.subscribe((query) => {
+				this.currentPage = query.page ? parseInt(query.page) : 1;
+			});
 	}
 
 	private navigate(queryParams, relativeTo = this.activatedRoute) {
