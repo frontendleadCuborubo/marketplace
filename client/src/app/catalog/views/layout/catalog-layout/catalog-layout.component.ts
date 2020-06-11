@@ -14,6 +14,7 @@ import { ICategory } from 'src/app/core/models/category.interfaces';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { IProduct } from 'src/app/core/models/product.interfaces';
 import { getCountText } from 'src/app/shared/components/util/catalog-utils';
+import { PATH_QUERY_PARAM_NAME } from '../../../catalog-query-params';
 
 @Component({
 	selector: 'catalog-layout',
@@ -49,7 +50,7 @@ export class CatalogLayoutComponent implements OnInit, OnDestroy {
 		this.category$ = this.activatedRoute.params.pipe(
 			switchMap((params) =>
 				this.categoryService
-					.getByPath(params['path'])
+					.getByPath(params[PATH_QUERY_PARAM_NAME])
 					.pipe(tap((category) => (this.categoryId = category._id)))
 			),
 			shareReplay(1)

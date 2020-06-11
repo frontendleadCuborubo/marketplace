@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { SORT_QUERY_PARAM_NAME } from '../../../../catalog-query-params';
+
 interface SortOptions {
 	title: string;
 	value: string;
@@ -30,8 +32,8 @@ export class ProductSorterComponent implements OnInit, OnDestroy {
 		this.activatedRoute.queryParams
 			.pipe(takeUntil(this._destroy$))
 			.subscribe((params) => {
-				if (params['sort']) {
-					this.selectedValue = params['sort'];
+				if (params[SORT_QUERY_PARAM_NAME]) {
+					this.selectedValue = params[SORT_QUERY_PARAM_NAME];
 				}
 			});
 	}

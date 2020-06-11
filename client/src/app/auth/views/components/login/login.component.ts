@@ -12,7 +12,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { FormComponent } from 'src/app/shared/components/form/form.component';
 
 @Component({
-	selector: 'auth-slogin',
+	selector: 'auth-login',
 	templateUrl: './login.component.html',
 })
 export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
@@ -38,7 +38,7 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	submit(formData: SimpleLoginInput) {
+	handleSubmit(formData: SimpleLoginInput) {
 		if (!this.form.valid) {
 			this.markAllAsDirty();
 			return;
@@ -47,12 +47,12 @@ export class LoginComponent extends FormComponent implements OnInit, OnDestroy {
 		this.authService
 			.login(formData)
 			.pipe(
+				takeUntil(this._destroy$),
 				switchMap(() =>
 					this.userServie
 						.getUser()
 						.pipe(tap(() => this.router.navigate(['my/settings'])))
-				),
-				takeUntil(this._destroy$)
+				)
 			)
 			.subscribe({
 				error: ({ error }) => {
