@@ -61,7 +61,6 @@ class AuthServiceStub {
 
 describe('LoginComponent', () => {
 	let component: LoginComponent;
-	let router: Router;
 	let fixture: ComponentFixture<LoginComponent>;
 	let el: DebugElement;
 	let submitBtn: ElementRef;
@@ -87,7 +86,6 @@ describe('LoginComponent', () => {
 		})
 			.compileComponents()
 			.then(() => {
-				router = TestBed.get(Router);
 				fixture = TestBed.createComponent(LoginComponent);
 				component = fixture.componentInstance;
 				el = fixture.debugElement;
@@ -169,19 +167,17 @@ describe('LoginComponent', () => {
 
 	it('should called AuthService login()', fakeAsync(() => {
 		fillFormAndClickSubmit(loginFormValidInput);
-		advance(fixture);
 
 		spyOn(authService, 'login').and.callThrough();
 
 		component.handleSubmit(loginFormValidInput);
 		advance(fixture);
 
-		expect(authService.login).toHaveBeenCalled();
+		expect(authService.login).toHaveBeenCalledWith(loginFormValidInput);
 	}));
 
 	it('should called UserService getUser() if AuthService login() return success', fakeAsync(() => {
 		fillFormAndClickSubmit(loginFormValidInput);
-		advance(fixture);
 
 		spyOn(authService, 'login').and.returnValue(of(apiSuccessResponse));
 		spyOn(userService, 'getUser').and.callThrough();
@@ -189,13 +185,12 @@ describe('LoginComponent', () => {
 		component.handleSubmit(loginFormValidInput);
 		advance(fixture);
 
-		expect(authService.login).toHaveBeenCalled();
+		expect(authService.login).toHaveBeenCalledWith(loginFormValidInput);
 		expect(userService.getUser).toHaveBeenCalled();
 	}));
 
 	it('should navigate to user settings if login and getUser successfully', fakeAsync(() => {
 		fillFormAndClickSubmit(loginFormValidInput);
-		advance(fixture);
 
 		spyOn(authService, 'login').and.returnValue(of(apiSuccessResponse));
 		spyOn(userService, 'getUser').and.returnValue(of(user));
@@ -203,7 +198,7 @@ describe('LoginComponent', () => {
 		component.handleSubmit(loginFormValidInput);
 		advance(fixture);
 
-		expect(authService.login).toHaveBeenCalled();
+		expect(authService.login).toHaveBeenCalledWith(loginFormValidInput);
 		expect(userService.getUser).toHaveBeenCalled();
 		expect(routerSpy.navigate).toHaveBeenCalledWith(['my/settings']);
 		const navArgs = routerSpy.navigate.calls.first().args[0];
