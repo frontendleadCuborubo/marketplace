@@ -48,7 +48,7 @@ const loginFormInvalidInput = {
 let userService: UserService;
 class UserServiceStub {
 	getUser() {
-		return of();
+		return of(user);
 	}
 }
 
