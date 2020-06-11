@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { IProduct } from 'src/app/core/models/product.interfaces';
-import { getPrice } from 'src/app/shared/components/util/catalog-utils';
+import { getPrice } from 'src/app/catalog/helper/catalog-data';
 
 @Component({
 	selector: 'product-item',

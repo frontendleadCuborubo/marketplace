@@ -1,3 +1,10 @@
+<div class="ke-box ke-box_margin-bottom_xl">
+	<div class="ke-grid ke-grid_align_right">
+		<div class="ke-grid__item">
+			<ng-content select="product-sorter"></ng-content>
+		</div>
+	</div>
+</div>
 <div
 	class="ke-grid ke-grid_indent_xs ke-grid_indent_m@large ke-grid_column_2 ke-grid_column_3@small ke-grid_column_4@medium"
 >
@@ -6,4 +13,6 @@
 		[product]="product"
 	></product-item>
 </div>
-<ng-content select="product-list-toolbar"></ng-content>
+<div class="ke-box ke-box_margin-top_xl">
+	<ng-content select="app-pager"></ng-content>
+</div>

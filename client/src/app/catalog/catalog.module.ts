@@ -8,7 +8,6 @@ import { CatalogFilterComponent } from './views/layout/navigation/filters.compon
 import { ProductListComponent } from './views/components/products/list/list.component';
 import { ProductItemComponent } from './views/components/products/list/item/item.component';
 import { ProductSorterComponent } from './views/components/products/sorter/sorter.component';
-import { ProductListToolbarComponent } from './views/components/products/toolbar/toolbar.component';
 
 @NgModule({
 	declarations: [
@@ -17,7 +16,6 @@ import { ProductListToolbarComponent } from './views/components/products/toolbar
 		ProductListComponent,
 		ProductItemComponent,
 		ProductSorterComponent,
-		ProductListToolbarComponent,
 	],
 	imports: [SharedModule, CatalogRoutingModule],
 	exports: [],

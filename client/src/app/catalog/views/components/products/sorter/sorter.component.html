@@ -1,15 +1,15 @@
 <div class="ke-grid ke-grid_indent_xs ke-grid_valign_middle">
-	<div class="ke-grid__item" *ngFor="let option of getSortOptions()">
+	<div class="ke-grid__item" *ngFor="let order of availableOrders">
 		<button
 			type="button"
 			class="ke-button ke-button_theme_switcher"
 			[ngClass]="{
 				'ke-button_state_hover ke-button_state_readonly':
-					selectedValue === option.value
+					sortValue === order.value
 			}"
-			(click)="handleSort(option.value)"
+			(click)="handleSort(order.value)"
 		>
-			{{ option.title }}
+			{{ order.title }}
 		</button>
 	</div>
 </div>

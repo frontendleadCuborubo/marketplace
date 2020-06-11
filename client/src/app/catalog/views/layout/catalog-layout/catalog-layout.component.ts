@@ -13,7 +13,7 @@ import {
 import { ICategory } from 'src/app/core/models/category.interfaces';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { IProduct } from 'src/app/core/models/product.interfaces';
-import { getCountText } from 'src/app/shared/components/util/catalog-utils';
+import { getCountText } from '../../../helper/catalog-data';
 import { PATH_QUERY_PARAM_NAME } from '../../../catalog-query-params';
 
 @Component({
