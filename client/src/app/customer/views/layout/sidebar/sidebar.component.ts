@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { IUser } from 'src/app/core/models/user.interfaces';
-import { AppViewService } from 'src/app/core/services/app-view.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
 	selector: 'customer-sidebar',
@@ -15,9 +15,9 @@ import { AppViewService } from 'src/app/core/services/app-view.service';
 export class CustomerSidebarComponent {
 	currentUser$: Observable<IUser>;
 
-	constructor(private appViewService: AppViewService) {}
+	constructor(private userService: UserService) {}
 
 	ngOnInit() {
-		this.currentUser$ = this.appViewService.getCurrentUser();
+		this.currentUser$ = this.userService.currentUser$;
 	}
 }

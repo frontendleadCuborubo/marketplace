@@ -4,7 +4,6 @@ import { takeUntil } from 'rxjs/operators';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/core/services/user.service';
-import { AppViewService } from 'src/app/core/services/app-view.service';
 import { IUser } from 'src/app/core/models/user.interfaces';
 
 @Component({
@@ -17,12 +16,11 @@ export class CustomerSettingsComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private _snackBar: MatSnackBar,
-		private appViewService: AppViewService,
 		private userService: UserService
 	) {}
 
 	ngOnInit() {
-		this.currentUser$ = this.appViewService.getCurrentUser();
+		this.currentUser$ = this.userService.currentUser$;
 	}
 
 	onSubmit(formData: IUser) {
