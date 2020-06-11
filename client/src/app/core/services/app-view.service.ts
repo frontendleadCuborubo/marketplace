@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { IUser } from 'src/app/core/models/user.interfaces';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class AppViewService {
 	private readonly currentUser$: Observable<IUser>;
 

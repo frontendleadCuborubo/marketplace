@@ -5,7 +5,9 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
 
 import { IUser } from '../models/user.interfaces';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class UserService {
 	private currentUserSubject = new BehaviorSubject<IUser>(null);
 	public currentUser$ = this.currentUserSubject

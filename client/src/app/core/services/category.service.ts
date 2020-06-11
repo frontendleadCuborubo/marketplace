@@ -13,7 +13,9 @@ export interface ProductCollectionResponse
 	totalProducts: number;
 }
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class CategoryService {
 	constructor(private http: HttpClient) {}
 

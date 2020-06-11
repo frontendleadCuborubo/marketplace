@@ -1,14 +1,8 @@
 import { NgModule, Optional, SkipSelf, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
-import { SessionService } from './services/session.service';
-import { AppViewService } from './services/app-view.service';
-
 import { UserService } from './services/user.service';
-import { CategoryService } from './services/category.service';
-import { ProductService } from './services/product.service';
 
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
@@ -20,12 +14,7 @@ import { appInitializer } from './app.initialization';
 	imports: [HttpClientModule],
 	exports: [HttpClientModule],
 	providers: [
-		SessionService,
 		AuthGuard,
-		AppViewService,
-		UserService,
-		CategoryService,
-		ProductService,
 		{
 			provide: APP_INITIALIZER,
 			useFactory: appInitializer,
@@ -37,11 +26,12 @@ import { appInitializer } from './app.initialization';
 			useClass: HttpRequestInterceptor,
 			multi: true,
 		},
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: HttpErrorInterceptor,
-			multi: true,
-		},
+		// TODO: Define what to do with 401 error when start app and when user try to fetch if token httpOnly cookie does not exists
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: HttpErrorInterceptor,
+		// 	multi: true,
+		// },
 	],
 })
 export class CoreModule {

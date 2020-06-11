@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { ClientStorageProvider } from './client-storage-provider';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class SessionService {
 	private readonly prefix = 'ozzi.';
 	private readonly storageProvider = new ClientStorageProvider();
